@@ -6,13 +6,19 @@ const {errorHandler} = require('./middleware/errormiddleware')
 const connectDB = require('./Config/db')
 
 connectDB()
+const cors = require('cors');
+
 
 const app = express()
+
+// Enable CORS for all routes
+app.use(cors());
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use('/api/goals', require('./routes/routes'))
+app.use('/api/users', require('./routes/userRoutes'))
 
 app.use(errorHandler)
 

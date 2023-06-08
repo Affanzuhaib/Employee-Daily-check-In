@@ -1,14 +1,24 @@
 const mongoose = require('mongoose')
 
 
-const goalSchema = mongoose.Schema({
-    text:{
+const WorkSchema = mongoose.Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User',
+    },
+    desc:{
         type: String,
-        require: [true, 'Please add a text value']
+        require: [true, 'please add some description']
+    },
+    task:{
+        type: String,
+        require: true,
+        enum:["Break","Meeting","Work"]
     }
 },{
     timestamps: true,
 })
 
 
-module.exports = mongoose.model('Goal', goalSchema)
+module.exports = mongoose.model('Goal', WorkSchema)
