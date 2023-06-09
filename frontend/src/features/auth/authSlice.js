@@ -14,7 +14,7 @@ export const registerUserAsync = createAsyncThunk(
         name,
         email,
         password,
-        contact,
+        contact, 
         department,
         joiningDate,
         role,
