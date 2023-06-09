@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../features/auth/authSlice';
+import { fetchAllEmployees, logoutUser } from '../features/auth/authSlice';
 import Sidebar from '../components/Sidebar';
 
 const Users = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user, users } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
 
-//   useEffect(() => {
-//     if (!user) {
-//       navigate('/');
-//     }
-//   }, [user]);
+  useEffect(() => {
+    dispatch(fetchAllEmployees());
+  }, []);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -25,24 +23,23 @@ const Users = () => {
   };
 
   return (
-    <div className="flex">
+    <div className='flex'>
       {/* Sidebar */}
-      <Sidebar/>
+      <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-grow bg-gray-100">
+      <div className='flex-grow bg-gray-100'>
         {/* Navbar */}
-        <nav className="bg-white shadow">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between">
-              <div className="flex items-center">
-                <h1 className="text-lg font-semibold">Users</h1>
-                
+        <nav className='bg-white shadow'>
+          <div className='container mx-auto px-4'>
+            <div className='flex justify-between'>
+              <div className='flex items-center'>
+                <h1 className='text-lg font-semibold'>Users</h1>
               </div>
-              <div className="flex items-center">
+              <div className='flex items-center'>
                 <button
                   onClick={handleAddEmployee}
-                  className="py-2 px-4 rounded transition duration-200 bg-blue-500 text-white hover:bg-blue-600"
+                  className='py-2 px-4 rounded transition duration-200 bg-blue-500 text-white hover:bg-blue-600'
                 >
                   Add Employee
                 </button>
@@ -52,7 +49,7 @@ const Users = () => {
         </nav>
 
         {/* Page Content */}
-        <div className="container mx-auto px-4 py-4">
+        <div className='container mx-auto px-4 py-4'>
           {/* Add your page content components here */}
         </div>
       </div>

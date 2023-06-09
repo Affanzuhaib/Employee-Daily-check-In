@@ -2,7 +2,8 @@
   "scripts": {
     "start": "node backend/server.js ",
     "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend"
+    "client": "npm start --prefix frontend",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -17,6 +18,7 @@
     "react-redux": "^8.0.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "husky": "^8.0.0"
   }
 }
