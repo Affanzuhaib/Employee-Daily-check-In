@@ -1,19 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { loginUser } from '../features/userService';
+import React, {  useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../features/userContext';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUserAsync } from '../features/auth/authSlice';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-//   const user = useContext(UserContext);
-//   const[user,setuser] =useState(currentuser);
-//   console.log(user);
-const {user} = useSelector(state => state.user)
+
+const {user} = useSelector(state => state.auth)
   
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   useEffect(() => {
     if (user) {
       if (user.role === 'Admin') {
@@ -26,25 +23,8 @@ const {user} = useSelector(state => state.user)
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const userData = await loginUser({
-        email,
-        password,
-      });
-      console.log(userData.role);
-    //   setuser(userData)
-      console.log(user)
-      localStorage.setItem('user', JSON.stringify(userData));
-      if (userData.role === 'Employee') {
-        navigate('/dashboard');
-      } else {
-        navigate('/admindashboard');
-      }
-      navigate('/dashboard')
-    } catch (error) {
-      console.log(error);
-    }
-  
+   
+    dispatch(loginUserAsync({email, password}))
     // Perform login logic here
     // You can access the email and password state variables here
 

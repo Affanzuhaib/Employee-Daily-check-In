@@ -8,7 +8,7 @@ const User = require('../Model/usermodel')
 //@access Private
 const registeremployee = asyncHandler(async(req,res) => {
    try {
-    const {name, email, password, contact, department, joining_date} = req.body
+    const {name, email, password, contact, department, joining_date,role} = req.body
 
     if (!name || !email || !password){
         res.status(400)
@@ -37,7 +37,11 @@ const registeremployee = asyncHandler(async(req,res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
-            token: generateToken(user._id)
+            role: user.role,
+            contact: user.contact,
+            department: user.department,
+            joining_date: user.joining_date,
+            token: generateToken(user._id) 
         })
     }else{
         res.status(400)
@@ -46,8 +50,7 @@ const registeremployee = asyncHandler(async(req,res) => {
 
     res.json({message: 'Register User'})
    } catch (error) {
-    res.status(500)
-    throw new Error('Server error')
+    return res.status(500).json({message: error || 'server error'})
    }
 })
 
@@ -55,6 +58,7 @@ const registeremployee = asyncHandler(async(req,res) => {
 //@route POST /api/users/login
 //@access Private
 const loginUser = asyncHandler(async(req,res) => {
+   try {
     const {email,password} = req.body
 
     const user = await User.findOne({email})
@@ -71,9 +75,11 @@ const loginUser = asyncHandler(async(req,res) => {
             token: generateToken(user._id)       
         })
     }else{
-        res.status(400)
-        throw new Error('Invalid credentials')
+        return res.status(400).json({ message : 'Invalid credentials'})
     }
+   } catch (error) {
+    return res.status(500).json({message: error || 'server error'})
+   }
 })
 
 //@desc get user data

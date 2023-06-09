@@ -1,25 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../features/auth/authSlice';
-import Slidebaremployee from '../components/Slidebaremployee';
+import Sidebar from '../components/Sidebar';
 
-function Dashboard() {
-const dispatch = useDispatch()
-  const {user} = useSelector(state => state.auth)
-        
-      const navigate = useNavigate()
-    
-      // useEffect(() => {
-      //   if(!user){
-      //       navigate('/')
-      //     }
-      // }, [user])
+const AdminDashboard = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate('/');
+  //   }
+  // }, [user]);
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/');
+  };
+
   return (
-    
     <div className="flex">
       {/* Sidebar */}
-      <Slidebaremployee/>
+      <Sidebar/>
+
       {/* Main Content */}
       <div className="flex-grow bg-gray-100">
         {/* Navbar */}
@@ -27,7 +33,7 @@ const dispatch = useDispatch()
           <div className="container mx-auto px-4">
             <div className="flex justify-between">
               <div className="flex items-center">
-                <h1 className="text-lg font-semibold">Employee Dashboard</h1>
+                <h1 className="text-lg font-semibold">Admin Dashboard</h1>
               </div>
               <div className="flex items-center">
                 {/* Add your navbar content here */}
@@ -41,9 +47,8 @@ const dispatch = useDispatch()
           {/* Add your page content components here */}
         </div>
       </div>
-      </div>
-    // <div>Dashboard <button onClick={() => dispatch(logoutUser())}>logout</button></div>
-  )
-}
+    </div>
+  );
+};
 
-export default Dashboard
+export default AdminDashboard;
