@@ -47,7 +47,7 @@ function Login() {
               id='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40'
+              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-black-400 focus:ring-black-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
           <div className='mb-2'>
@@ -59,14 +59,14 @@ function Login() {
               id='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40'
+              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-black-400 focus:ring-black-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
           <a href='#' className='text-xstext-gray-700 hover:underline'>
             Forget Password?
           </a>
           <div className='mt-6'>
-            <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600'>
+            <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-black-600 focus:outline-none focus:bg-black-600'>
               Login
             </button>
           </div>
