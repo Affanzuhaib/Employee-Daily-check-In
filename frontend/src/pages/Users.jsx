@@ -70,7 +70,6 @@
 //                     {/* Render the SignUp component */}
 //                     <Signup />
 
-
 //           <button onClick={handleCloseModal}>Close</button>
 //         </Modal>
 //       </div>
@@ -79,7 +78,7 @@
 // };
 
 // export default Users;
-import React, {useEffect,  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -88,13 +87,17 @@ import Sidebar from '../components/SidebarAdmin';
 // import SignupPopup from './SignupPopup';
 import Signup from './Signup';
 // import { Modal } from 'react-modal';
- 
+import Table from './Table';
+
+
 const Users = () => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
- 
+
   // const { user, users } = useSelector((state) => state.auth);
+  // const { users } = useSelector((state) => state.auth);
+
 
   useEffect(() => {
     dispatch(fetchAllEmployees());
@@ -142,7 +145,8 @@ const Users = () => {
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
           {/* Add your page content components here */}
-        </div>
+          <Table/>
+        </div> 
       </div>
 
       {/* Modal */}

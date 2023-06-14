@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/table' element={<Displaytable/>} />
+        <Route path='/table' element={<Displaytable />} />
         <Route
           path='/signup'
           element={user && user.role === 'Admin' ? <Signup /> : <Navigate to={'/'} />}
