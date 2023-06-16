@@ -1,76 +1,96 @@
 const asyncHandler = require('express-async-handler');
 
-const Goal = require('../Model/workmodel');
+const Work = require('../Model/workmodel');
 const User = require('../Model/usermodel');
 
-//@desc     Get goals
-//@route    GET /api/goals
+//@desc     Get works
+//@route    GET /api/works
 //@access   private
-const getgoals = asyncHandler(async (req, res) => {
-  const goals = await Goal.find({ user: req.user.id });
+const getworks = asyncHandler(async (req, res) => {
+  try {
+    const works = await Work.find({ user: req.user.id });
 
-  res.status(200).json(goals);
+    res.status(200).json(works);
+  } catch (error) {
+    return res.status(500).json({ message: error || 'server error' });
+  }
 });
 
 //@desc     set goals
 //@route    POST /api/goals
 //@access   private
-const setgoal = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
-    res.status(400);
-    throw new Error('Please add a text field');
-  }
+const setwork = asyncHandler(async (req, res) => {
+  try {
+    const { desc, task, start_time, start_date, time_taken } = req.body;
 
-  const goal = await Goal.create({
-    text: req.body.text,
-    user: req.user.id,
-  });
-  res.status(200).json(goal);
+    if (!desc || !task || !start_time || !start_date || !time_taken) {
+      return res.status(400).json({message: 'Please add all field'});
+    }
+
+    const work = await Work.create({
+      ...req.body,
+      user: req.user.id,
+    });
+  res.status(200).json(work);
+  } catch (error) {
+    return res.status(500).json({ message: error || 'server error' });
+    
+  }
 });
 
 //@desc     update goal
 //@route    PUT /api/goals/id
 //@access   private
-const updategoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id);
+const updatework = asyncHandler(async (req, res) => {
+  try {
+    const goal = await Work.findById(req.params.id);
 
-  if (!goal) {
-    res.status(400);
-    throw new Error('Goal not found');
+    if (!goal) {
+      res.status(400);
+      throw new Error('Work not found');
+    }
+
+    const user = await User.findById(req.user.id);
+
+    // Check for user
+    if (!user) {
+      res.status(401);
+      throw new Error('User not found');
+    }
+
+    if (goal.user.toString() !== user.id) {
+      res.status(401);
+      throw new Error('User not authorized');
+    }
+
+    const updatedWork = await Work.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(updatedWork);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-
-  const user = await User.findById(req.user.id);
-
-  //check for user
-  if (!user) {
-    res.status(401);
-    throw new Error('user not found');
-  }
-
-  if (goal.user.toString() !== user.id) {
-    res.status(401);
-    throw new Error('User not authorized');
-  }
-
-  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.status(200).json(updatedGoal);
 });
 
-//@desc     delete goal
-//@route    delete /api/goals/id
-//@access   private
-// const deletegoal = asyncHandler(async(req, res) =>{
-//     const goal = await Goal.findById(req.params.id)
 
-//     if (!goal){
-//         res.status(400)
-//         throw new Error('Goal not found')
-//     }
+// @desc     delete goal
+// @route    delete /api/goals/id
+// @access   private
+const deletework = asyncHandler(async (req, res) => {
+  try {
+    const work = await Work.findById(req.params.id);
 
-//     await goal.remove()
+    if (!work) {
+      res.status(400);
+      throw new Error('Work not found');
+    }
 
-//     res.status(200).json({id: req.params.id })
-// })
+    await work.deleteOne();
+
+    res.status(200).json({ id: req.params.id });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 // const deletegoal = async (req, res) => {
 //   // const goal = await Goal.findById(req.params.id);
@@ -96,7 +116,8 @@ const updategoal = asyncHandler(async (req, res) => {
 // };
 
 module.exports = {
-  getgoals,
-  setgoal,
-  updategoal,
+  getworks,
+  setwork,
+  updatework,
+  deletework
 };

@@ -6,6 +6,7 @@ import AdminDashboard from './pages/Admindashboard';
 import { useSelector } from 'react-redux';
 import Users from './pages/Users';
 import Displaytable from './components/table';
+import Worktask from './pages/Worktask';
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -25,6 +26,10 @@ function App() {
         <Route
           path='/dashboard'
           element={user && user.role === 'Employee' ? <Dashboard /> : <Navigate to={'/'} />}
+        />
+        <Route
+          path='/Worktask'
+          element={user && user.role === 'Employee' ? <Worktask /> : <Navigate to={'/'} />}
         />
         <Route
           path='/admindashboard'

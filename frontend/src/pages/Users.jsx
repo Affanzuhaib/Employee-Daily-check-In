@@ -87,8 +87,7 @@ import Sidebar from '../components/SidebarAdmin';
 // import SignupPopup from './SignupPopup';
 import Signup from './Signup';
 // import { Modal } from 'react-modal';
-import Table from './Table';
-
+import Table from './UsersTable';
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -97,7 +96,6 @@ const Users = () => {
 
   // const { user, users } = useSelector((state) => state.auth);
   // const { users } = useSelector((state) => state.auth);
-
 
   useEffect(() => {
     dispatch(fetchAllEmployees());
@@ -145,8 +143,8 @@ const Users = () => {
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
           {/* Add your page content components here */}
-          <Table/>
-        </div> 
+          <Table />
+        </div>
       </div>
 
       {/* Modal */}

@@ -16,10 +16,23 @@ const WorkSchema = mongoose.Schema(
       require: true,
       enum: ['Break', 'Meeting', 'Work'],
     },
+    start_time: {
+      type: String,
+      require: true,
+    },
+    start_date: {
+      type: String,
+      require: true,
+    },
+    time_taken: {
+      type: Number,
+      require: true,
+    },
+    
   },
   {
     timestamps: true,
   },
 );
 
-module.exports = mongoose.model('Goal', WorkSchema);
+module.exports = mongoose.model('Work', WorkSchema);

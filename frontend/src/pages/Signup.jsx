@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { registerUserAsync } from '../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 // import { DateRangePicker } from 'react-dates';
 // import 'react-dates/lib/css/_datepicker.css';
-
 
 const Signup = ({ onClose }) => {
   const [name, setName] = useState('');
@@ -14,8 +13,8 @@ const Signup = ({ onClose }) => {
   const [password, setPassword] = useState('');
   const [contact, setContact] = useState('');
   const [department, setDepartment] = useState('');
-  const [joiningDate, setJoiningDate] = useState('');
-  // const [joiningDate, setJoiningDate] = useState(new Date());
+  // const [joiningDate, setJoiningDate] = useState('');
+  const [joiningDate, setJoiningDate] = useState(new Date());
   // const [joiningDate, setJoiningDate] = useState(null);
   const [role, setRole] = useState('Employee');
 
@@ -31,10 +30,10 @@ const Signup = ({ onClose }) => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const formattedJoiningDate = joiningDate.toISOString(); // Format the date as needed (e.g., ISO string)
+    const formattedJoiningDate = joiningDate.toISOString(); // Format the date as needed (e.g., ISO string)
 
-    // dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate: formattedJoiningDate, role }));
-    dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate, role }));
+    dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate: formattedJoiningDate, role }));
+    // dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate, role }));
     // Perform form submission logic here
     // You can access the form values using the state variables (name, email, password, etc.)
 
@@ -136,7 +135,7 @@ const Signup = ({ onClose }) => {
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
-          <div className='mb-2'>
+          {/* <div className='mb-2'>
             <label htmlFor='joiningDate' className='block text-sm font-semibold text-gray-800'>
               Joining Date
             </label>
@@ -147,8 +146,8 @@ const Signup = ({ onClose }) => {
               onChange={(e) => setJoiningDate(e.target.value)}
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
-          </div>
-          {/* <div className='mb-2'>
+          </div> */}
+          <div className='mb-2'>
             <label htmlFor='joiningDate' className='block text-sm font-semibold text-gray-800'>
               Joining Date
             </label>
@@ -156,10 +155,11 @@ const Signup = ({ onClose }) => {
               id='joiningDate'
               selected={joiningDate}
               onChange={(date) => setJoiningDate(date)}
+              dateFormat='dd/MM/yyyy'
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
-          </div> */}
-              {/* <div className='mb-2'>
+          </div>
+          {/* <div className='mb-2'>
               <label htmlFor='joiningDate' className='block text-sm font-semibold text-gray-800'>
                 Joining Date
               </label>

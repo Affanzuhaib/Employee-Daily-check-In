@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { getgoals, setgoal, updategoal, deletegoal } = require('../controller/controllers');
+const { getworks, setwork, updatework, deletework } = require('../controller/controllers');
 
-const { protect, Adminprotect } = require('../middleware/authmiddleware');
+const { protect } = require('../middleware/authmiddleware');
 
-router.route('/').get(protect, getgoals).post(protect, setgoal);
-router.route('/:id').delete(Adminprotect, deletegoal).put(Adminprotect, updategoal);
+router.route('/').get(protect, getworks).post(protect, setwork);
+router.route('/:id').delete(protect,deletework).put(protect, updatework);
 
 module.exports = router;

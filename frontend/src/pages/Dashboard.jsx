@@ -39,7 +39,6 @@ function Dashboard() {
         </div>
       </div>
     </div>
-    // <div>Dashboard <button onClick={() => dispatch(logoutUser())}>logout</button></div>
   );
 }
 

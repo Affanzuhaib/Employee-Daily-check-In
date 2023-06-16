@@ -25,7 +25,7 @@ export default function Slidebaremployee() {
           <ul className='space-y-2'>
             <li>
               <Link
-                to='#'
+                to='/dashboard'
                 className='block py-2 px-4 rounded transition duration-200 hover:bg-gray-700'
               >
                 Dashboard
@@ -33,7 +33,7 @@ export default function Slidebaremployee() {
             </li>
             <li>
               <Link
-                to='#'
+                to='/Worktask'
                 className='block py-2 px-4 rounded transition duration-200 hover:bg-gray-700'
               >
                 Work Task
