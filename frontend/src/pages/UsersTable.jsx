@@ -1,14 +1,36 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchWorksById } from '../features/working/workslice';
+import React, { useState } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import EmployeeDetails from './EmployeeDetails';
+// import EmployeeDetails from './EmployeeDetails';
+// import { fetchWorksById } from '../features/working/workslice';
+// import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-export default function Table(){
-  const { users } = useSelector((state) => state.auth);  
-  
-  const dispatch = useDispatch();
+export default function Table() {
+  const { users } = useSelector((state) => state.auth);
 
-  const fetchWorksForEmployee = (userId) => {
-    dispatch(fetchWorksById(userId));
+  // const dispatch = useDispatch();
+  // // const fetchWorksForEmployee = (userId) => {
+  // //   dispatch(fetchWorksById(userId));
+  // // };
+  // const navigate= useNavigate();
+  // const handleClick = (user) => {
+  //   dispatch(fetchWorksById({ userId: user._id }));
+  //   navigate('EmployeeDetails')
+  // // };
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+
+  // const handleClick = (user) => {
+  //   dispatch(fetchWorksById({ userId: user._id }));
+  //   navigate(`/employee-detail/${user._id}`);
+  // };
+
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
   };
 
   return (
@@ -67,12 +89,17 @@ export default function Table(){
                 {' '}
                 {index + 1}{' '}
               </td>
-              <td 
-              className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'   
-              onClick={() => fetchWorksForEmployee(user._id)}
-              ><button>
+              <td
+                className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'
+              >
+              {/* < to={`/EmployeeDetails/${user._id}`} onClick={() => fetchWorksForEmployee(user._id)}> */}
+              {/* <Link to={`/EmployeeDetails/${user._id}`} state={{ user }}>
                 {user.name}
-                </button></td>
+              </Link> */}
+                <button onClick={() => handleUserClick(user)} className="text-blue-500">
+                  {user.name}
+                </button>
+              </td>
               <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>{user.email}</td>
               <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>
                 {user.department}
@@ -94,6 +121,26 @@ export default function Table(){
           ))}
         </tbody>
       </table>
+      {/* Popup window */}
+      {/* {selectedUser && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8">
+            <EmployeeDetails userId={selectedUser._id} />
+            <button onClick={() => setSelectedUser(null)} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">
+              Close
+            </button>
+          </div>
+        </div>
+      )}*/}
+      {selectedUser && (
+          <div className="bg-white rounded-lg p-8">
+            <EmployeeDetails userId={selectedUser._id} />
+            <button onClick={() => setSelectedUser(null)} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">
+              Close
+            </button>
+          </div>
+      )}
+      
     </div>
   );
 }

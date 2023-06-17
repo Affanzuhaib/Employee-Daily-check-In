@@ -57,7 +57,7 @@ function Worktask() {
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
           {/* Add your page content components here */}
-          <WorkTable/>
+          <WorkTable />
         </div>
       </div>
 

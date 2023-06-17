@@ -96,37 +96,42 @@ const initialState = {
 
 // Helper function to get the bearer token from the Redux store
 const getBearerToken = (getState) => {
-  const  token  = getState().auth.user.token;
+  const token = getState().auth.user.token;
   return `Bearer ${token}`;
 };
 
 // Create an async thunk to fetch works from the backend
-export const fetchWorks = createAsyncThunk('works/fetchWorks', async (_, { rejectWithValue, getState }) => {
-  try {
-    const response = await axios.get(`${apiUrl}/api/work`, {
-      headers: {
-        Authorization: getBearerToken(getState),
-      },
-    });
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
-  }
-});
+export const fetchWorks = createAsyncThunk(
+  'works/fetchWorks',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.get(`${apiUrl}/api/work`, {
+        headers: {
+          Authorization: getBearerToken(getState),
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
 
-
-export const fetchWorksById = createAsyncThunk('works/fetchWorksById', async (userId, { rejectWithValue, getState }) => {
-  try {
-    const response = await axios.get(`${apiUrl}/api/users/works/${userId}`, {
-      headers: {
-        Authorization: getBearerToken(getState),
-      },
-    });
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
-  }
-});
+export const fetchWorksById = createAsyncThunk(
+  'works/fetchWorksById',
+  async (userId, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.get(`${apiUrl}/api/users/works/${userId}`, {
+        headers: {
+          Authorization: getBearerToken(getState),
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
 
 // Create an async thunk to create a new work
 export const createWork = createAsyncThunk(
@@ -142,7 +147,7 @@ export const createWork = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 // Create an async thunk to update a work
@@ -159,22 +164,25 @@ export const updateWork = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 // Create an async thunk to delete a work
-export const deleteWork = createAsyncThunk('works/deleteWork', async (id, { rejectWithValue, getState }) => {
-  try {
-    await axios.delete(`${apiUrl}/api/work/${id}`, {
-      headers: {
-        Authorization: getBearerToken(getState),
-      },
-    });
-    return id;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
-  }
-});
+export const deleteWork = createAsyncThunk(
+  'works/deleteWork',
+  async (id, { rejectWithValue, getState }) => {
+    try {
+      await axios.delete(`${apiUrl}/api/work/${id}`, {
+        headers: {
+          Authorization: getBearerToken(getState),
+        },
+      });
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
 
 // Create a slice for works
 const workSlice = createSlice({
@@ -238,7 +246,7 @@ const workSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      
+
       .addCase(fetchWorksById.pending, (state) => {
         state.loading = true;
         state.error = null;

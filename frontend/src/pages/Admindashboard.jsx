@@ -44,8 +44,8 @@ const AdminDashboard = () => {
 
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
-          <PieChart/>
-          <Stackedbar/>
+          <PieChart />
+          <Stackedbar />
           {/* Add your page content components here */}
         </div>
       </div>

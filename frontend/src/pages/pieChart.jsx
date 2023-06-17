@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchWorks } from '../features/working/workslice';
-import {Chart, ArcElement, Tooltip, Title, Legend} from 'chart.js';
+import {  useDispatch, useSelector } from 'react-redux';
+import {  fetchWorksById } from '../features/working/workslice';
+import { Chart, ArcElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-Chart.register(
-    ArcElement, 
-    Tooltip, 
-    Title, 
-    Legend,
-);
+Chart.register(ArcElement, Tooltip, Title, Legend);
 
 export function PieChart() {
   const dispatch = useDispatch();
@@ -17,13 +12,13 @@ export function PieChart() {
   const [breakTimeCurrentDay, setBreakTimeCurrentDay] = useState(0);
   const [meetingTimeCurrentDay, setMeetingTimeCurrentDay] = useState(0);
   const [workTimeCurrentDay, setWorkTimeCurrentDay] = useState(0);
- 
+
   const [breakTimePreviousDay, setBreakTimePreviousDay] = useState(0);
   const [meetingTimePreviousDay, setMeetingTimePreviousDay] = useState(0);
   const [workTimePreviousDay, setWorkTimePreviousDay] = useState(0);
- 
+
   useEffect(() => {
-    dispatch(fetchWorks());
+    dispatch(fetchWorksById({userId: "6480e9402ced33803f3fcd7c" }));
   }, [dispatch]);
 
   useEffect(() => {
@@ -64,7 +59,7 @@ export function PieChart() {
     const filteredWorks = works.filter((work) => work.task === task);
     const totalTime = filteredWorks.reduce((sum, work) => sum + work.time_taken, 0);
     return totalTime;
-  };   
+  };
 
   const currentDateData = {
     labels: ['Break', 'Meeting', 'Work'],
@@ -72,7 +67,11 @@ export function PieChart() {
       {
         label: 'Current Day',
         data: [breakTimeCurrentDay, meetingTimeCurrentDay, workTimeCurrentDay],
-        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(75, 192, 192, 0.6)'],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+        ],
         borderWidth: 1,
       },
     ],
@@ -84,28 +83,32 @@ export function PieChart() {
       {
         label: 'Previous Day',
         data: [breakTimePreviousDay, meetingTimePreviousDay, workTimePreviousDay],
-        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(75, 192, 192, 0.6)'],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+        ],
         borderWidth: 1,
       },
     ],
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4">Pie Chart</h1>
+    <div className='container mx-auto p-4'>
+      <h1 className='text-2xl font-semibold mb-4'>Pie Chart</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
         <div>
-          <h2 className="text-lg font-semibold mb-2">Current Day  {getCurrentDate()}</h2>
-          <div className="bg-white p-4 rounded-lg shadow">
-            <Pie data={currentDateData}  height={350}/>
+          <h2 className='text-lg font-semibold mb-2'>Current Day {getCurrentDate()}</h2>
+          <div className='bg-white p-4 rounded-lg shadow'>
+            <Pie data={currentDateData} height={350} />
           </div>
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold mb-2">Previous Day {getPreviousDate()}</h2>
-          <div className="bg-white p-4 rounded-lg shadow">
-            <Pie data={previousDateData}  height={350}/>
+          <h2 className='text-lg font-semibold mb-2'>Previous Day {getPreviousDate()}</h2>
+          <div className='bg-white p-4 rounded-lg shadow'>
+            <Pie data={previousDateData} height={350} />
           </div>
         </div>
       </div>

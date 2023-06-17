@@ -146,5 +146,5 @@ module.exports = {
   loginUser,
   getAllEmployees,
   getMe,
-  getWorksById
+  getWorksById,
 };

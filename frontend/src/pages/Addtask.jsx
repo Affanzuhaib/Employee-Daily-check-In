@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -20,8 +19,8 @@ const WorkComponent = ({ onClose }) => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formattedStartDate = startDate.toISOString().split('T')[0];;
-  
+    const formattedStartDate = startDate.toISOString().split('T')[0];
+
     dispatch(
       createWork({
         desc,
@@ -37,7 +36,6 @@ const WorkComponent = ({ onClose }) => {
     setStartDate(new Date());
     setTimeTaken(''); // Reset the form fields
   };
- 
 
   return (
     <div className='fixed left-0 top-0 z-[1055] justify-center flex h-full w-full overflow-y-auto overflow-x-hidden outline-none'>
@@ -146,8 +144,6 @@ WorkComponent.propTypes = {
 };
 
 export default WorkComponent;
-
-
 
 // import { useState } from 'react';
 // import DatePicker from 'react-datepicker';

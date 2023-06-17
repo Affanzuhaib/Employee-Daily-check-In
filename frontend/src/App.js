@@ -6,7 +6,7 @@ import AdminDashboard from './pages/Admindashboard';
 import { useSelector } from 'react-redux';
 import Users from './pages/Users';
 import Worktask from './pages/Worktask';
-import { Stackedbar } from './pages/Stackedbar';
+// import EmployeeDetails from './pages/EmployeeDetails';
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -14,7 +14,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/bar' element={<Stackedbar />} />
         <Route
           path='/signup'
           element={user && user.role === 'Admin' ? <Signup /> : <Navigate to={'/'} />}
@@ -27,9 +26,17 @@ function App() {
           path='/dashboard'
           element={user && user.role === 'Employee' ? <Dashboard /> : <Navigate to={'/'} />}
         />
+        {/* <Route 
+          path='/EmployeeDetails/:userId'
+          element={user && user.role === 'Admin' ? <EmployeeDetails /> : <Navigate to={'/'} />}
+        /> */}
+        {/* <Route 
+          path='/employee-detail/:userId'
+          element={user && user.role === 'Admin' ? <EmployeeDetails /> : <Navigate to={'/'} />}
+        /> */}
         <Route
           path='/Worktask'
-          element={user && user.role === 'Employee' ? <Worktask /> : <Navigate to={'/'} />}
+          Component={user && user.role === 'Employee' ? <Worktask /> : <Navigate to={'/'} />}
         />
         <Route
           path='/admindashboard'

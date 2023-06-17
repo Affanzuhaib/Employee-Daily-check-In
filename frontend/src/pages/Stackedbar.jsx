@@ -83,8 +83,6 @@
 //   );
 // }
 
-
-
 import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { useDispatch, useSelector } from 'react-redux';
@@ -185,13 +183,13 @@ export function Stackedbar() {
   // Format date as week string (e.g., "Week 1")
   const getWeekString = (date) => {
     const weekNumber = Math.ceil((date.getDate() + (date.getDay() + 1)) / 7);
-    return "Week"+{weekNumber};
+    return 'Week' + { weekNumber };
   };
 
   return (
     <div>
       <h2>Weekly Activity</h2>
-      <Chart options={chartData.options} series={chartData.series} type="bar" height={350} />
+      <Chart options={chartData.options} series={chartData.series} type='bar' height={350} />
     </div>
   );
 }

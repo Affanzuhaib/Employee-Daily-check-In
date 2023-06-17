@@ -9,7 +9,7 @@ import { Stackedbar } from './Stackedbar';
 function Dashboard() {
   // const dispatch = useDispatch();
   // const { user } = useSelector((state) => state.auth);
-  
+
   // const navigate = useNavigate();
 
   // useEffect(() => {
@@ -36,24 +36,23 @@ function Dashboard() {
         </nav>
 
         {/* Page Content */}
-        <div className="container mx-auto p-4">
+        <div className='container mx-auto p-4'>
+          <div className='grid grid-cols-2 gap-8'>
+            <div>
+              <h2 className='text-lg font-semibold mb-2'>Pie Chart</h2>
+              <div className='bg-white p-4 rounded-lg shadow'>
+                <PieChart />
+              </div>
+            </div>
 
-      <div className="grid grid-cols-2 gap-8">
-        <div>
-          <h2 className="text-lg font-semibold mb-2">Pie Chart</h2>
-          <div className="bg-white p-4 rounded-lg shadow">
-            <PieChart />
+            <div>
+              <h2 className='text-lg font-semibold mb-2'>Stacked Bar Chart</h2>
+              <div className='bg-white p-4 rounded-lg shadow'>
+                <Stackedbar />
+              </div>
+            </div>
           </div>
         </div>
-
-        <div>
-          <h2 className="text-lg font-semibold mb-2">Stacked Bar Chart</h2>
-          <div className="bg-white p-4 rounded-lg shadow">
-            <Stackedbar />
-          </div>
-        </div>
-      </div>
-    </div>
       </div>
     </div>
   );

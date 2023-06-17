@@ -3,29 +3,29 @@ import { useSelector } from 'react-redux';
 
 function WorkTable() {
   const { works } = useSelector((state) => state.work);
-  
-const today = new Date().toISOString().split('T')[0];
-const yesterday = new Date(Date.now() - 864e5).toISOString().split('T')[0];
 
-// Filter works to get only today and yesterday's work
-const filteredWorks = works.filter((work) => work.start_date === today || work.start_date === yesterday);
+  const today = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now() - 864e5).toISOString().split('T')[0];
 
-// Sort the filteredWorks array by date and time
-filteredWorks.sort((a, b) => {
-  const dateA = new Date(a.start_date);
-  const dateB = new Date(b.start_date);
-  if (dateA < dateB) {
-    return -1;
-  } else if (dateA > dateB) {
-    return 1;
-  } else {
-    const [hourA, minuteA] = a.start_time.split(':');
-    const [hourB, minuteB] = b.start_time.split(':');
-    return new Date(2000, 0, 1, hourA, minuteA) - new Date(2000, 0, 1, hourB, minuteB);
-  }
-});
+  // Filter works to get only today and yesterday's work
+  const filteredWorks = works.filter(
+    (work) => work.start_date === today || work.start_date === yesterday,
+  );
 
-
+  // Sort the filteredWorks array by date and time
+  filteredWorks.sort((a, b) => {
+    const dateA = new Date(a.start_date);
+    const dateB = new Date(b.start_date);
+    if (dateA < dateB) {
+      return -1;
+    } else if (dateA > dateB) {
+      return 1;
+    } else {
+      const [hourA, minuteA] = a.start_time.split(':');
+      const [hourB, minuteB] = b.start_time.split(':');
+      return new Date(2000, 0, 1, hourA, minuteA) - new Date(2000, 0, 1, hourB, minuteB);
+    }
+  });
 
   return (
     <div>
@@ -120,9 +120,6 @@ filteredWorks.sort((a, b) => {
 
 export default WorkTable;
 
-
-
-
 // import React from 'react';
 // import { useSelector } from 'react-redux';
 
@@ -132,7 +129,7 @@ export default WorkTable;
 //   const yesterday = new Date(Date.now() - 864e5).toISOString().split('T')[0];
 
 //   // Filter works to get only today and yesterday's work
-//   const filteredWorks = works    
+//   const filteredWorks = works
 //   .filter((work) => work.start_date === today || work.start_date === yesterday)
 //   .sort((a, b) => {
 //     const dateA = new Date(a.start_date);
