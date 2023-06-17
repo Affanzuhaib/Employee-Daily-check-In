@@ -1,8 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchWorksById } from '../features/working/workslice';
 
-function Table() {
-  const { users } = useSelector((state) => state.auth);
+export default function Table(){
+  const { users } = useSelector((state) => state.auth);  
+  
+  const dispatch = useDispatch();
+
+  const fetchWorksForEmployee = (userId) => {
+    dispatch(fetchWorksById(userId));
+  };
+
   return (
     <div>
       <table className='min-w-full divide-y divide-gray-200'>
@@ -53,13 +61,25 @@ function Table() {
           </tr>
         </thead>
         <tbody className='divide-y divide-gray-200'>
-          {users.map((user,index) => (
+          {users.map((user, index) => (
             <tr key={user._id}>
-              <td className='px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap'> {index+1} </td>
-              <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>{user.name}</td>
+              <td className='px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap'>
+                {' '}
+                {index + 1}{' '}
+              </td>
+              <td 
+              className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'   
+              onClick={() => fetchWorksForEmployee(user._id)}
+              ><button>
+                {user.name}
+                </button></td>
               <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>{user.email}</td>
-              <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>{user.department}</td>
-              <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>{user.joining_date}</td>
+              <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>
+                {user.department}
+              </td>
+              <td className='px-6 py-4 text-sm text-gray-800 whitespace-nowrap'>
+                {user.joining_date}
+              </td>
               <td className='px-6 py-4 text-sm font-medium text-right whitespace-nowrap'>
                 <a className='text-green-500 hover:text-green-700' href='#'>
                   Edit
@@ -77,5 +97,3 @@ function Table() {
     </div>
   );
 }
-
-export default Table;

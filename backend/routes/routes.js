@@ -5,6 +5,6 @@ const { getworks, setwork, updatework, deletework } = require('../controller/con
 const { protect } = require('../middleware/authmiddleware');
 
 router.route('/').get(protect, getworks).post(protect, setwork);
-router.route('/:id').delete(protect,deletework).put(protect, updatework);
+router.route('/:id').delete(protect, deletework).put(protect, updatework);
 
 module.exports = router;

@@ -32,7 +32,17 @@ const Signup = ({ onClose }) => {
     e.preventDefault();
     const formattedJoiningDate = joiningDate.toISOString(); // Format the date as needed (e.g., ISO string)
 
-    dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate: formattedJoiningDate, role }));
+    dispatch(
+      registerUserAsync({
+        name,
+        email,
+        password,
+        contact,
+        department,
+        joiningDate: formattedJoiningDate,
+        role,
+      }),
+    );
     // dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate, role }));
     // Perform form submission logic here
     // You can access the form values using the state variables (name, email, password, etc.)

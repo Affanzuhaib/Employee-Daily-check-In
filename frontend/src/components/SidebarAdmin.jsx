@@ -46,12 +46,12 @@ export default function Sidebar() {
             </li>
             <li>
               <Link>
-              <button
-                onClick={handleLogout}
-                className='block py-2 px-4 rounded transition duration-200 hover:bg-gray-700'
-              >
-                Logout
-              </button>
+                <button
+                  onClick={handleLogout}
+                  className='block py-2 px-4 rounded transition duration-200 hover:bg-gray-700'
+                >
+                  Logout
+                </button>
               </Link>
             </li>
             {/* Add more sidebar links as needed */}

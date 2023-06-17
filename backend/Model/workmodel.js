@@ -28,7 +28,6 @@ const WorkSchema = mongoose.Schema(
       type: Number,
       require: true,
     },
-    
   },
   {
     timestamps: true,

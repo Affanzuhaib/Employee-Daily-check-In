@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const User = require('../Model/usermodel');
+const Work = require('../Model/workmodel');
 
 //@desc Register new user
 //@route POST /api/users
@@ -122,6 +123,17 @@ const getMe = asyncHandler(async (req, res) => {
   }
 });
 
+const getWorksById = asyncHandler(async (req, res) => {
+  try {
+    const works = await Work.find({ user: req.params.userId });
+
+    res.status(200).json(works);
+  } catch (error) {
+    console.error(error); // Log the error message to the console
+    return res.status(500).json({ message: 'Server Error', error: error.message });
+  }
+});
+
 //generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -134,4 +146,5 @@ module.exports = {
   loginUser,
   getAllEmployees,
   getMe,
+  getWorksById
 };

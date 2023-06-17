@@ -5,8 +5,8 @@ import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/Admindashboard';
 import { useSelector } from 'react-redux';
 import Users from './pages/Users';
-import Displaytable from './components/table';
 import Worktask from './pages/Worktask';
+import { Stackedbar } from './pages/Stackedbar';
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/table' element={<Displaytable />} />
+        <Route path='/bar' element={<Stackedbar />} />
         <Route
           path='/signup'
           element={user && user.role === 'Admin' ? <Signup /> : <Navigate to={'/'} />}

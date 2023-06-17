@@ -16,6 +16,9 @@ const getworks = asyncHandler(async (req, res) => {
   }
 });
 
+
+
+
 //@desc     set goals
 //@route    POST /api/goals
 //@access   private
@@ -24,17 +27,16 @@ const setwork = asyncHandler(async (req, res) => {
     const { desc, task, start_time, start_date, time_taken } = req.body;
 
     if (!desc || !task || !start_time || !start_date || !time_taken) {
-      return res.status(400).json({message: 'Please add all field'});
+      return res.status(400).json({ message: 'Please add all field' });
     }
 
     const work = await Work.create({
       ...req.body,
       user: req.user.id,
     });
-  res.status(200).json(work);
+    res.status(200).json(work);
   } catch (error) {
     return res.status(500).json({ message: error || 'server error' });
-    
   }
 });
 
@@ -70,7 +72,6 @@ const updatework = asyncHandler(async (req, res) => {
   }
 });
 
-
 // @desc     delete goal
 // @route    delete /api/goals/id
 // @access   private
@@ -90,7 +91,6 @@ const deletework = asyncHandler(async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 
 // const deletegoal = async (req, res) => {
 //   // const goal = await Goal.findById(req.params.id);
@@ -119,5 +119,5 @@ module.exports = {
   getworks,
   setwork,
   updatework,
-  deletework
+  deletework,
 };

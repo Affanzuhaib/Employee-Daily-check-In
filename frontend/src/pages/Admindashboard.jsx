@@ -3,6 +3,8 @@ import React from 'react';
 // import {  useNavigate } from 'react-router-dom';
 // import { logoutUser } from '../features/auth/authSlice';
 import Sidebar from '../components/SidebarAdmin';
+import { PieChart } from './pieChart';
+import { Stackedbar } from './Stackedbar';
 
 const AdminDashboard = () => {
   // const dispatch = useDispatch();
@@ -42,6 +44,8 @@ const AdminDashboard = () => {
 
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
+          <PieChart/>
+          <Stackedbar/>
           {/* Add your page content components here */}
         </div>
       </div>
