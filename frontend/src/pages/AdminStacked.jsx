@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchWorksById } from '../features/working/workslice';
 import PropTypes from 'prop-types';
 
-export function AdminStacked({userId}) {
+export function AdminStacked({ userId }) {
   const dispatch = useDispatch();
   const works = useSelector((state) => state.work.works);
 
@@ -36,9 +36,9 @@ export function AdminStacked({userId}) {
 
   useEffect(() => {
     if (userId) {
-    dispatch(fetchWorksById({ userId }));
+      dispatch(fetchWorksById({ userId }));
     }
-}, [userId, dispatch]);
+  }, [userId, dispatch]);
 
   useEffect(() => {
     const taskNames = ['Not Working', 'Working', 'Meeting'];
@@ -113,5 +113,5 @@ export function AdminStacked({userId}) {
 }
 
 AdminStacked.propTypes = {
-    userId: PropTypes.string.isRequired,
-  };
+  userId: PropTypes.string.isRequired,
+};

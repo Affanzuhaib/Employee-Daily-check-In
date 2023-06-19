@@ -5,15 +5,6 @@ import { logoutUser } from '../features/auth/authSlice';
 
 export default function Slidebaremployee() {
   const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.auth);
-
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if(!user){
-  //       navigate('/')
-  //     }
-  // }, [user])
   return (
     <div className='bg-gray-800 text-white w-64 flex-none'>
       {/* Sidebar Content */}

@@ -5,15 +5,8 @@ import { logoutUser } from '../features/auth/authSlice';
 
 export default function Sidebar() {
   const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate('/');
-  //   }
-  // }, [user]);
 
   const handleLogout = () => {
     dispatch(logoutUser());

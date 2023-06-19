@@ -89,28 +89,6 @@ const deletework = asyncHandler(async (req, res) => {
   }
 });
 
-// const deletegoal = async (req, res) => {
-//   // const goal = await Goal.findById(req.params.id);
-//   // const user = await User.findById(req.user.id);
-
-//   // //check for user
-//   // if (!user){
-//   //     res.status(401)
-//   //     throw new Error('user not found')
-//   // }
-
-//   // if (goal.user.toString() !== user.id){
-//   //     res.status(401)
-//   //     throw new Error('User not authorized')
-//   // }
-
-//   try {
-//     await Goal.findByIdAndDelete(req.params.id);
-//     res.status(200).json({ id: req.params.id });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
 
 module.exports = {
   getworks,

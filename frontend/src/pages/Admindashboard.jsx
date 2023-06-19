@@ -1,27 +1,10 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
-// import {  useNavigate } from 'react-router-dom';
-// import { logoutUser } from '../features/auth/authSlice';
 import Sidebar from '../components/SidebarAdmin';
 import { PieChart } from './pieChart';
 import { Stackedbar } from './Stackedbar';
 
 const AdminDashboard = () => {
-  // const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.auth);
 
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate('/');
-  //   }
-  // }, [user]);
-
-  // const handleLogout = () => {
-  //   dispatch(logoutUser());
-  //   navigate('/');
-  // };
 
   return (
     <div className='flex'>
@@ -37,7 +20,7 @@ const AdminDashboard = () => {
               <div className='flex items-center'>
                 <h1 className='text-lg font-semibold'>Admin Dashboard</h1>
               </div>
-              <div className='flex items-center'>{/* Add your navbar content here */}</div>
+              <div className='flex items-center'>{/*navbar content*/}</div>
             </div>
           </div>
         </nav>
@@ -46,7 +29,7 @@ const AdminDashboard = () => {
         <div className='container mx-auto px-4 py-4'>
           <PieChart />
           <Stackedbar />
-          {/* Add your page content components here */}
+          {/*page content*/}
         </div>
       </div>
     </div>

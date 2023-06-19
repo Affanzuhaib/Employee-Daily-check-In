@@ -32,10 +32,6 @@ const userSchema = mongoose.Schema(
       required: true,
       enum: ['Admin', 'Employee'],
     },
-    // name:{
-    //     type: String,
-    //     required: [true, 'pleas add a name']
-    // }
   },
   {
     timestamps: true,

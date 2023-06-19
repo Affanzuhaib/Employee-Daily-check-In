@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchWorks  } from '../features/working/workslice';
+import { useSelector } from 'react-redux';
 import { Chart, ArcElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 Chart.register(ArcElement, Tooltip, Title, Legend);
 
 export function PieChart() {
-  // const dispatch = useDispatch();
   const works = useSelector((state) => state.work.works);
 
   const [breakTimeCurrentDay, setBreakTimeCurrentDay] = useState(0);
@@ -17,10 +14,6 @@ export function PieChart() {
   const [breakTimePreviousDay, setBreakTimePreviousDay] = useState(0);
   const [meetingTimePreviousDay, setMeetingTimePreviousDay] = useState(0);
   const [workTimePreviousDay, setWorkTimePreviousDay] = useState(0);
-
-  // useEffect(() => {
-  //   dispatch(fetchWorks());
-  // }, [dispatch]);
 
   useEffect(() => {
     // Calculate total time for current day

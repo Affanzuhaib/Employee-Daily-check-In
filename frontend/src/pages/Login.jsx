@@ -25,10 +25,7 @@ function Login() {
     e.preventDefault();
 
     dispatch(loginUserAsync({ email, password }));
-    // Perform login logic here
-    // You can access the email and password state variables here
 
-    // Example: Log the values to the console
     console.log('Email:', email);
     console.log('Password:', password);
   };

@@ -144,34 +144,3 @@ WorkComponent.propTypes = {
 };
 
 export default WorkComponent;
-
-// import { useState } from 'react';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-
-// const YourComponent = () => {
-//   const [startDate, setStartDate] = useState(null);
-
-//   const handleDateChange = (date) => {
-//     // Extract the date part from the selected date
-//     const selectedDate = date.toISOString().split('T')[0];
-//     setStartDate(selectedDate);
-//   };
-
-//   return (
-//     <div>
-//       <label htmlFor='startDate' className='block text-sm font-semibold text-gray-800'>
-//         Start Date
-//       </label>
-//       <DatePicker
-//         id='startDate'
-//         selected={startDate}
-//         onChange={handleDateChange}
-//         dateFormat='dd/MM/yyyy'
-//         className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
-//       />
-//     </div>
-//   );
-// };
-
-// export default YourComponent;

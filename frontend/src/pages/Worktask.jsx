@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import Slidebaremployee from '../components/Slidebaremployee';
-// import SignupPopup from './SignupPopup';
 import Addtask from './Addtask';
 import { fetchWorks } from '../features/working/workslice';
 import WorkTable from './worktable';
-// import { Modal } from 'react-modal';
 
 function Worktask() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-
-  // const { user, users } = useSelector((state) => state.auth);
-  // const { users } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(fetchWorks());
@@ -56,13 +48,12 @@ function Worktask() {
 
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
-          {/* Add your page content components here */}
+          {/*page content components*/}
           <WorkTable />
         </div>
       </div>
 
       {/* Modal */}
-      {/* <Modal></Modal> */}
       {showModal && <Addtask onClose={handleCloseModal} />}
     </div>
   );

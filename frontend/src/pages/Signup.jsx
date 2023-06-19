@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import { DateRangePicker } from 'react-dates';
-// import 'react-dates/lib/css/_datepicker.css';
 
 const Signup = ({ onClose }) => {
   const [name, setName] = useState('');
@@ -13,14 +11,8 @@ const Signup = ({ onClose }) => {
   const [password, setPassword] = useState('');
   const [contact, setContact] = useState('');
   const [department, setDepartment] = useState('');
-  // const [joiningDate, setJoiningDate] = useState('');
   const [joiningDate, setJoiningDate] = useState(new Date());
-  // const [joiningDate, setJoiningDate] = useState(null);
   const [role, setRole] = useState('Employee');
-
-  // const [open, setOpen] = useState(false);
-
-  // const handleOpen = () => setOpen(!open);
 
   const handleModalClose = () => {
     // Close the modal
@@ -43,9 +35,6 @@ const Signup = ({ onClose }) => {
         role,
       }),
     );
-    // dispatch(registerUserAsync({ name, email, password, contact, department, joiningDate, role }));
-    // Perform form submission logic here
-    // You can access the form values using the state variables (name, email, password, etc.)
 
     // Reset the form
     setName('');
@@ -58,7 +47,6 @@ const Signup = ({ onClose }) => {
   };
 
   return (
-    // <div className='fixed inset-0 flex items-center justify-center z-50 overflow-y-auto verflow-x-hidden outline-none'>
     <div className='fixed left-0 top-0 z-[1055] justify-center flex h-full w-full overflow-y-auto overflow-x-hidden outline-none'>
       <div className='w-full max-w-sm p-6 bg-white rounded-md shadow-md'>
         <div className='flex justify-between items-center mb-4'>
@@ -145,18 +133,6 @@ const Signup = ({ onClose }) => {
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
-          {/* <div className='mb-2'>
-            <label htmlFor='joiningDate' className='block text-sm font-semibold text-gray-800'>
-              Joining Date
-            </label>
-            <input
-              type='text'
-              id='joiningDate'
-              value={joiningDate}
-              onChange={(e) => setJoiningDate(e.target.value)}
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
-            />
-          </div> */}
           <div className='mb-2'>
             <label htmlFor='joiningDate' className='block text-sm font-semibold text-gray-800'>
               Joining Date
@@ -169,23 +145,6 @@ const Signup = ({ onClose }) => {
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
-          {/* <div className='mb-2'>
-              <label htmlFor='joiningDate' className='block text-sm font-semibold text-gray-800'>
-                Joining Date
-              </label>
-              <DateRangePicker
-                id='joiningDate'
-                startDate={joiningDate}
-                startDateId='startDate'
-                endDate={joiningDate}
-                endDateId='endDate'
-                onDatesChange={({ startDate }) => setJoiningDate(startDate)}
-                focusedInput={joiningDate ? 'startDate' : null}
-                onFocusChange={(focusedInput) => setJoiningDate(focusedInput ? joiningDate : null)}
-                startDatePlaceholderText='Start Date'
-                endDatePlaceholderText='End Date'
-              />
-            </div> */}
           <div className='mb-2'>
             <label htmlFor='role' className='block text-sm font-semibold text-gray-800'>
               Role

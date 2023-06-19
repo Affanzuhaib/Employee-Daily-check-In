@@ -1,22 +1,10 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {  useNavigate } from 'react-router-dom';
-// import { logoutUser } from '../features/auth/authSlice';
 import Slidebaremployee from '../components/Slidebaremployee';
 import { PieChart } from './pieChart';
 import { Stackedbar } from './Stackedbar';
 
 function Dashboard() {
-  // const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.auth);
 
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if(!user){
-  //       navigate('/')
-  //     }
-  // }, [user])
   return (
     <div className='flex'>
       {/* Sidebar */}

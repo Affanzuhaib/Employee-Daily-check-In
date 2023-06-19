@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  fetchWorksById } from '../features/working/workslice';
+import { fetchWorksById } from '../features/working/workslice';
 import { Chart, ArcElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
 Chart.register(ArcElement, Tooltip, Title, Legend);
 
-export function Adminpie({userId}) {
+export function Adminpie({ userId }) {
   const dispatch = useDispatch();
   const works = useSelector((state) => state.work.works);
 
@@ -18,14 +18,11 @@ export function Adminpie({userId}) {
   const [meetingTimePreviousDay, setMeetingTimePreviousDay] = useState(0);
   const [workTimePreviousDay, setWorkTimePreviousDay] = useState(0);
 
-//   useEffect(() => {
-//     dispatch(fetchWorksById());
-//   }, [dispatch]);  
-    useEffect(() => {
-        if (userId) {
-        dispatch(fetchWorksById({ userId }));
-        }
-    }, [userId, dispatch]);
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchWorksById({ userId }));
+    }
+  }, [userId, dispatch]);
   useEffect(() => {
     // Calculate total time for current day
     const currentDateWorks = works.filter((work) => work.start_date === getCurrentDate());
@@ -122,5 +119,5 @@ export function Adminpie({userId}) {
 }
 
 Adminpie.propTypes = {
-    userId: PropTypes.string.isRequired,
-  };
+  userId: PropTypes.string.isRequired,
+};
