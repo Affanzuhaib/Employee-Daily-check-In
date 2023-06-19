@@ -74,35 +74,53 @@
 
 // export default EmployeeDetails;
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
-// import { fetchWorksById } from '../features/working/workslice';
+import { useDispatch } from 'react-redux';
+import { fetchWorksById } from '../features/working/workslice';
 // import { PieChart } from './pieChart';
 import { Stackedbar } from './Stackedbar';
 import { PieChart } from './pieChart';
 
 function EmployeeDetails({ userId }) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (userId) {
-  //     dispatch(fetchWorksById({ userId }));
-  //   }
-  // }, [userId, dispatch]);
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchWorksById({ userId }));
+    }
+  }, [userId, dispatch]);
 
   return (
     <div>
       {userId && (
-        <div>
-          <h2>Pie Chart for {userId}</h2>
-          <PieChart />
+        // <div>
+        //   <h2>Pie Chart for {userId}</h2>
+        //   {/* <PieChart /> */}
 
-          <h2>Stacked Bar Chart for {userId}</h2>
-          <Stackedbar />
+        //   <h2>Stacked Bar Chart for {userId}</h2>
+        //   <Stackedbar />
+        // </div>
+        <div className='container mx-auto p-4'>
+          <div className='grid grid-cols-2 gap-8'>
+            <div>
+              <h2 className='text-lg font-semibold mb-2'>Pie Chart</h2>
+              <div className='bg-white p-4 rounded-lg shadow'>
+                <PieChart />
+              </div>
+            </div>
+
+            <div>
+              <h2 className='text-lg font-semibold mb-2'>Stacked Bar Chart</h2>
+              <div className='bg-white p-4 rounded-lg shadow'>
+                <Stackedbar />
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
+    
   );
 }
 

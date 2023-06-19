@@ -137,7 +137,7 @@ const getWorksById = asyncHandler(async (req, res) => {
 //generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '30d',
+    expiresIn: '60d',
   });
 };
 

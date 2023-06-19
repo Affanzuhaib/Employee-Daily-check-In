@@ -119,17 +119,17 @@ export const fetchWorks = createAsyncThunk(
 
 export const fetchWorksById = createAsyncThunk(
   'works/fetchWorksById',
-  async (userId, { rejectWithValue, getState }) => {
-    try {
-      const response = await axios.get(`${apiUrl}/api/users/works/${userId}`, {
-        headers: {
-          Authorization: getBearerToken(getState),
-        },
-      });
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
+  async ({userId}, { rejectWithValue, getState }) => {
+      try {        
+        const response = await axios.get(`${apiUrl}/api/users/works/${userId}`, {
+          headers: {
+            Authorization: getBearerToken(getState),
+          },
+        });
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response.data);
+      }
   },
 );
 
