@@ -21,20 +21,20 @@ export default function Sidebar() {
         </div>
         <nav className='flex-1'>
           <ul className='space-y-2'>
-            <li>
+            {/* <li>
               <Link
                 to='/admindashboard'
                 className='block py-2 px-4 rounded transition duration-200 hover:bg-gray-700'
               >
                 Dashboard
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to='/users'
                 className='block py-2 px-4 rounded transition duration-200 hover:bg-gray-700'
               >
-                Users
+                Dashboard
               </Link>
             </li>
             <li>

@@ -89,8 +89,6 @@ const getAllEmployees = asyncHandler(async (req, res) => {
   }
 });
 
-
-
 const getMe = asyncHandler(async (req, res) => {
   try {
     const user = await User.findById(req.user.id); // Assuming you have a User model and req.user contains the authenticated user

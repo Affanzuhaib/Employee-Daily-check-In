@@ -4,7 +4,6 @@ import { PieChart } from './pieChart';
 import { Stackedbar } from './Stackedbar';
 
 function Dashboard() {
-
   return (
     <div className='flex'>
       {/* Sidebar */}

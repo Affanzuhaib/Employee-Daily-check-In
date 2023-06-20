@@ -14,7 +14,7 @@ function Login() {
   useEffect(() => {
     if (user) {
       if (user.role === 'Admin') {
-        navigate('/admindashboard');
+        navigate('/users');
       } else {
         navigate('/dashboard');
       }

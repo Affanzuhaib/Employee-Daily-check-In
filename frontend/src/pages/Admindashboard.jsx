@@ -1,11 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/SidebarAdmin';
-import { PieChart } from './pieChart';
-import { Stackedbar } from './Stackedbar';
 
 const AdminDashboard = () => {
-
-
   return (
     <div className='flex'>
       {/* Sidebar */}
@@ -27,8 +23,8 @@ const AdminDashboard = () => {
 
         {/* Page Content */}
         <div className='container mx-auto px-4 py-4'>
-          <PieChart />
-          <Stackedbar />
+          {/* <PieChart />
+          <Stackedbar /> */}
           {/*page content*/}
         </div>
       </div>
