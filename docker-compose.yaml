@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  backend:  
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - duckdns
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+      - duckdns
+
+  duckdns:
+    image: linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - SUBDOMAINS=employeetracker.duckdns.org
+      - TOKEN=c0166df2-1b4f-4bf5-9c6e-605b12f101d3
+      - LOG_FILE=true
+    volumes:
+      - D:\AFFAN\Filpr-program\Externship\Employee-Daily-check-In\config:\config
+    restart: unless-stopped
+
+volumes:
+  logs:
+
